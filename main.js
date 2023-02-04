@@ -17,7 +17,8 @@ camera.position.setX(-3);
 
 renderer.render( scene, camera );
 
-const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );
+const geometry = new THREE.TorusGeometry(22, 3, 16, 100)
+//( 10, 3, 16, 100 );
 const material = new THREE.MeshStandardMaterial( { color: 0xFF6347 } );
 const torus = new THREE.Mesh( geometry, material );
 
@@ -62,8 +63,29 @@ const danik = new THREE.Mesh(
 
 scene.add(danik);
 
+const dwTexture = new THREE.TextureLoader().load('dw_logo.png');
+
+const dw = new THREE.Mesh(
+  new THREE.BoxGeometry(2,2,2),
+  new THREE.MeshBasicMaterial( { map: dwTexture })
+);
+
+scene.add(dw);
+
+const marsTexture = new THREE.TextureLoader().load('2k_mars.jpg');
+const normalTexture = new THREE.TextureLoader().load('normal.jpg');
+
+const mars = new THREE.Mesh(
+  new THREE.SphereGeometry(2, 15, 15),
+  new THREE.MeshStandardMaterial( { 
+    map: marsTexture,
+    normalMap: normalTexture })
+);
+
+scene.add(mars);
+
 const jupiterTexture = new THREE.TextureLoader().load('2k_jupiter.jpg');
-//const normalTexture = new THREE.TextureLoader().load('normal.jpg');
+
 
 const jupiter = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
@@ -76,20 +98,34 @@ const jupiter = new THREE.Mesh(
 scene.add(jupiter);
 
 jupiter.position.z = 30;
-jupiter.position.setX(-10);
+jupiter.position.setX(-7);
+
+mars.position.z = 10;
+mars.position.setX(5);
 
 danik.position.z = -5;
 danik.position.x = 2;
+danik.position.y = 0.5;
+
+dw.position.z = 5;
+dw.position.x = 4;
 
 function moveCamera() {
 
   const t = document.body.getBoundingClientRect().top;
-  jupiter.rotation.x += 0.05;
+  // jupiter.rotation.x += 0.05;
   jupiter.rotation.y += 0.075;
-  jupiter.rotation.z += 0.05;
+  // jupiter.rotation.z += 0.05;
+
+  // mars.rotation.x += -0.005;
+  mars.rotation.y += -0.025;
+  // mars.rotation.z += -0.005;
 
   danik.rotation.y += 0.01;
   danik.rotation.z += 0.01;
+
+  dw.rotation.y += 0.01;
+  dw.rotation.z += 0.01;
 
   camera.position.z = t * -0.01;
   camera.position.x = t * -0.0002;
@@ -107,7 +143,11 @@ function animate() {
   torus.rotation.y += 0.005;
   torus.rotation.z += 0.01;
 
-  jupiter.rotation.x += -0.002;
+  jupiter.rotation.y += -0.002;
+  mars.rotation.y += 0.005;
+
+  dw.rotation.x += 0.01;
+  dw.rotation.y += 0.02;
 
   //controls.update();
 
