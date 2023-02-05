@@ -86,12 +86,10 @@ ul {
 
 @media (max-width: 900px) {
   main {
-    width: 90vw;
     color: white;
     position: absolute;
-    width: 90%;
-    margin: 0px auto;
     padding: 30px 5px 5px 5px;
+    width: 93vw;
     display: flex;
     flex-direction: column;
     opacity: 0.8
