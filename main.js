@@ -64,10 +64,24 @@ const danik = new THREE.Mesh(
 scene.add(danik);
 
 const dwTexture = new THREE.TextureLoader().load('dw_logo.png');
+const ghostTexture = new THREE.TextureLoader().load('ghost.jpg');
+const mwTexture = new THREE.TextureLoader().load('mw.jpeg');
+const destinyTexture = new THREE.TextureLoader().load('destiny.png');
+const activisionTexture = new THREE.TextureLoader().load('activision.png');
+const tntTexture = new THREE.TextureLoader().load('tnt.jpg');
+
+const logoMaterials = [
+  new THREE.MeshBasicMaterial({ map: dwTexture }),  
+  new THREE.MeshBasicMaterial({ map: dwTexture }),
+  new THREE.MeshBasicMaterial({ map: tntTexture }),
+  new THREE.MeshBasicMaterial({ map: mwTexture }),
+  new THREE.MeshBasicMaterial({ map: activisionTexture }),
+  new THREE.MeshBasicMaterial({ map: activisionTexture }),
+]
 
 const dw = new THREE.Mesh(
   new THREE.BoxGeometry(2,2,2),
-  new THREE.MeshBasicMaterial( { map: dwTexture })
+  logoMaterials
 );
 
 scene.add(dw);
