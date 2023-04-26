@@ -13,7 +13,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
-camera.position.setX(-3);
+camera.position.setX(0);
 
 renderer.render( scene, camera );
 
@@ -64,19 +64,22 @@ const danik = new THREE.Mesh(
 scene.add(danik);
 
 const dwTexture = new THREE.TextureLoader().load('dw_logo.png');
-const ghostTexture = new THREE.TextureLoader().load('ghost.jpg');
 const mwTexture = new THREE.TextureLoader().load('mw.jpeg');
-const destinyTexture = new THREE.TextureLoader().load('destiny.png');
 const activisionTexture = new THREE.TextureLoader().load('activision.png');
 const tntTexture = new THREE.TextureLoader().load('tnt.jpg');
+const grassTopTexture = new THREE.TextureLoader().load('grass-top.jpg');
+const grassBottomTexture = new THREE.TextureLoader().load('grass-bottom.jpg');
+const grassSidesTexture = new THREE.TextureLoader().load('grass-sides.jpg');
+const grassSidesEvenTexture = new THREE.TextureLoader().load('grass-sides-even.jpg');
+
 
 const logoMaterials = [
-  new THREE.MeshBasicMaterial({ map: dwTexture }),  
-  new THREE.MeshBasicMaterial({ map: dwTexture }),
-  new THREE.MeshBasicMaterial({ map: tntTexture }),
-  new THREE.MeshBasicMaterial({ map: mwTexture }),
-  new THREE.MeshBasicMaterial({ map: activisionTexture }),
-  new THREE.MeshBasicMaterial({ map: activisionTexture }),
+  new THREE.MeshBasicMaterial({ map: grassSidesTexture }),  
+  new THREE.MeshBasicMaterial({ map: grassSidesTexture}),
+  new THREE.MeshBasicMaterial({ map: grassTopTexture }),
+  new THREE.MeshBasicMaterial({ map: grassBottomTexture }),
+  new THREE.MeshBasicMaterial({ map: grassSidesTexture }),
+  new THREE.MeshBasicMaterial({ map: grassSidesTexture}),
 ]
 
 const dw = new THREE.Mesh(
